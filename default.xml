@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="origin" fetch="git@github.com:stuzo-services" />
+
+    <default revision="develop" remote="origin" />
+
+    <project name="db-ios" path="db-ios" />
+    <project name="db-mobile-localization" revision="main" path="db-mobile-localization" />
+    <project name="db-terraform" path="db-terraform" />
+    <project name="db-backend-monorepo" revision="main" path="db-backend-monorepo" />
+    <project name="db-app-e2e" revision="main" path="db-app-e2e" />
+    <project name="db-android" path="db-android" />
+    <project name="db-load-testing" path="db-load-testing" />
+    <project name="db-mars-mock-server" revision="main" path="db-mars-mock-server" />
+    <project name="db-graphql-subscription-load-test" path="db-graphql-subscription-load-test" />
+    <project name="db-shared-powercard-consolidation" path="db-shared-powercard-consolidation" />
+    <project name="db-license-report-generator" path="db-license-report-generator" />
+    <project name="db-qa-js" path="db-qa-js" />
+    <project name="db-admin-app" path="db-admin-app" />
+    <project name="db-host-monitoring" revision="feature/DB-6993/rabbitmq-health-check" path="db-host-monitoring" />
+</manifest>
+
