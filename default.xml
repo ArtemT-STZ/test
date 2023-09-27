@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <manifest>
 
-    <!-- Define the remote repository base. All projects will be fetched from this base unless specified otherwise. -->
-    <remote name="stuzo-services" fetch="git@github.com:stuzo-services" />
+<remote fetch="git@github.com:stuzo-services" name="stuzo-services" />
 
-    <!-- Default settings: using the 'develop' branch, and up to 4 projects will be synced simultaneously. -->
-    <default revision="develop" remote="stuzo-services" sync-j="4" />
+     <default revision="develop" remote="stuzo-services" />
 
-    <!-- List of projects. Each project has its repository name, local path, and optionally a specific branch. -->
-
-    <project name="db-ios" path="db-ios" />
-    <project name="db-mobile-localization" revision="main" path="db-mobile-localization" />
-    <project name="db-terraform" path="db-terraform" />
-    <project name="db-backend-monorepo" revision="main" path="db-backend-monorepo" />
-    <project name="db-app-e2e" revision="main" path="db-app-e2e" />
-    <project name="db-android" path="db-android" />
-    <project name="db-load-testing" path="db-load-testing" />
-    <project name="db-mars-mock-server" revision="main" path="db-mars-mock-server" />
-    <project name="db-graphql-subscription-load-test" path="db-graphql-subscription-load-test" />
-    <project name="db-shared-powercard-consolidation" path="db-shared-powercard-consolidation" />
-    <project name="db-license-report-generator" path="db-license-report-generator" />
-    <project name="db-qa-js" path="db-qa-js" />
-    <project name="db-admin-app" path="db-admin-app" />
-    <project name="db-host-monitoring" revision="feature/DB-6993/rabbitmq-health-check" path="db-host-monitoring" />
+     <project name="db-ios.git" path="db-ios" />
+     <project name="db-mobile-localization.git" revision="main" path="db-mobile-localization" />
+     <project name="db-terraform.git" path="db-terraform" />
+     <project name="db-backend-monorepo.git" revision="main" path="db-backend-monorepo" />
+     <project name="db-app-e2e.git" revision="main" path="db-app-e2e" />
+     <project name="db-android.git" path="db-android" />
+     <project name="db-load-testing.git" path="db-load-testing" />
+     <project name="db-mars-mock-server.git" revision="main" path="db-mars-mock-server" />
+     <project name="db-graphql-subscription-load-test.git" path="db-graphql-subscription-load-test" />
+     <project name="db-shared-powercard-consolidation.git" path="db-shared-powercard-consolidation" />
+     <project name="db-license-report-generator.git" path="db-license-report-generator" />
+     <project name="db-qa-js.git" path="db-qa-js" />
+     <project name="db-admin-app.git" path="db-admin-app" />
+     <project name="db-host-monitoring.git" revision="feature/DB-6993/rabbitmq-health-check" path="db-host-monitoring" />
 
 </manifest>
