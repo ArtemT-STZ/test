@@ -2,7 +2,7 @@
 
 <manifest>
 
-<remote fetch="git@github.com:stuzo-services" name="stuzo-services" />
+<remote fetch="ssh://git@github.com/stuzo-services" name="stuzo-services" />
 
      <default revision="develop" remote="stuzo-services" />
 
