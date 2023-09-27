@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+
+    <!-- Define the remote repository base. All projects will be fetched from this base unless specified otherwise. -->
     <remote name="stuzo-services" fetch="git@github.com:stuzo-services" />
 
+    <!-- Default settings: using the 'develop' branch, and up to 4 projects will be synced simultaneously. -->
     <default revision="develop" remote="stuzo-services" sync-j="4" />
+
+    <!-- List of projects. Each project has its repository name, local path, and optionally a specific branch. -->
 
     <project name="db-ios" path="db-ios" />
     <project name="db-mobile-localization" revision="main" path="db-mobile-localization" />
@@ -18,4 +23,5 @@
     <project name="db-qa-js" path="db-qa-js" />
     <project name="db-admin-app" path="db-admin-app" />
     <project name="db-host-monitoring" revision="feature/DB-6993/rabbitmq-health-check" path="db-host-monitoring" />
+
 </manifest>
