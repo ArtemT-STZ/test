@@ -1,3 +1,10 @@
+## [1.0.1-release.1](https://github.com/ArtemT-STZ/test/compare/v1.0.0...v1.0.1-release.1) (2025-02-10)
+
+
+### Bug Fixes
+
+* **semver-test:** remove some file ([#20](https://github.com/ArtemT-STZ/test/issues/20)) ([6b5de6a](https://github.com/ArtemT-STZ/test/commit/6b5de6a02c21594d792c19adfeaff485301b44a0))
+
 # 1.0.0 (2025-02-10)
 
 
