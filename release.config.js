@@ -1,7 +1,7 @@
 module.exports = {
   branches: [
     { name: 'main' },
-    { name: 'release', prerelease: true }
+    { name: 'release', prerelease: true , tagFormat: 'rc-${version}' }
   ],
   plugins: [
     '@semantic-release/commit-analyzer',
@@ -14,4 +14,3 @@ module.exports = {
     '@semantic-release/github'
   ]
 };
-
