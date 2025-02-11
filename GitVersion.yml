@@ -8,9 +8,10 @@ branches:
     label: ''
   develop:
     regex: ^develop$
-    # increment: Minor
-    is-source-branch-for: ['feature', 'release']
+    increment: Minor  # Ensure this is set to Minor
     label: 'alpha'
+    track-merge-target: false
+    is-source-branch-for: ['feature', 'release']
   feature:
     regex: ^feature[/-]
     increment: Inherit
