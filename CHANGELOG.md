@@ -1,3 +1,19 @@
+# [1.1.0-rc.1](https://github.com/ArtemT-STZ/test/compare/v1.0.0...v1.1.0-rc.1) (2025-02-11)
+
+
+### Bug Fixes
+
+* **semver-test:** remove some file ([#20](https://github.com/ArtemT-STZ/test/issues/20)) ([57ac034](https://github.com/ArtemT-STZ/test/commit/57ac034b23b486ab9425aa596c12bc6014960890))
+* **semver:** fix tag format ([5071702](https://github.com/ArtemT-STZ/test/commit/5071702a99ad8809fdf53bd7e731c6e75306305c))
+
+
+### Features
+
+* **rebase-test-1:** remove 1 ([#30](https://github.com/ArtemT-STZ/test/issues/30)) ([47a311a](https://github.com/ArtemT-STZ/test/commit/47a311a93af81e2369a48c173adbd88ce65ceb6c))
+* **rebase-test-2:** remove 3 ([#31](https://github.com/ArtemT-STZ/test/issues/31)) ([806bd19](https://github.com/ArtemT-STZ/test/commit/806bd19538516f897f7edec9a6ae6288656698c1))
+* **semver:** change release to rc ([2188654](https://github.com/ArtemT-STZ/test/commit/2188654a23050901f6d04aaacfb4ab3a412c2680))
+* **semver:** change tag format ([#22](https://github.com/ArtemT-STZ/test/issues/22)) ([237af70](https://github.com/ArtemT-STZ/test/commit/237af709e9f8e45dc90a8c8c9ecb714c092070a8))
+
 ## [1.0.1-release.1](https://github.com/ArtemT-STZ/test/compare/v1.0.0...v1.0.1-release.1) (2025-02-10)
 
 
