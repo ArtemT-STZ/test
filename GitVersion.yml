@@ -1,0 +1,35 @@
+mode: ContinuousDelivery
+branches:
+  main:
+    regex: ^main$
+    increment: none
+    is-release-branch: false
+    tracks-release-branches: true
+    label: ''
+  develop:
+    regex: ^develop$
+    increment: Minor
+    is-source-branch-for: ['feature', 'release']
+    label: 'alpha'
+  feature:
+    regex: ^feature[/-]
+    increment: Inherit
+    label: 'feature'
+  release:
+    regex: ^release[/-]
+    increment: Patch
+    is-release-branch: true
+    label: 'rc'
+  hotfix:
+    regex: ^hotfix[/-]
+    increment: Patch
+    label: 'beta'
+  pull-request:
+    regex: ^(pull|pr)[/-]
+    increment: Inherit
+    label: 'pr'
+
+ignore:
+  sha: []
+
+commit-message-incrementing: Enabled
