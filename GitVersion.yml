@@ -7,7 +7,7 @@ branches:
     tracks-release-branches: true
     label: ''
   develop:
-    regex: ^develop$
+    # regex: ^develop$
     increment: Minor
     is-source-branch-for: ['feature', 'release']
     label: 'alpha'
