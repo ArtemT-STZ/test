@@ -30,7 +30,7 @@ branches:
     increment: Inherit
     label: 'pr'
 
-ignore:
-  sha: []
+# ignore:
+#   sha: []
 
 commit-message-incrementing: Enabled
