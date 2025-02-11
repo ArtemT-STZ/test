@@ -1,3 +1,10 @@
+# [1.2.0-rc.2](https://github.com/ArtemT-STZ/test/compare/v1.2.0-rc.1...v1.2.0-rc.2) (2025-02-11)
+
+
+### Features
+
+* **another-testing:** add 6 ([#48](https://github.com/ArtemT-STZ/test/issues/48)) ([3a2f315](https://github.com/ArtemT-STZ/test/commit/3a2f315714f9e179db7cfe975ee4e7376b0bd436))
+
 # [1.2.0-rc.1](https://github.com/ArtemT-STZ/test/compare/v1.1.1-rc.1...v1.2.0-rc.1) (2025-02-11)
 
 
