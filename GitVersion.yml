@@ -1,4 +1,4 @@
-mode: ContinuousDeployment
+mode: ContinuousDeployment  # Switch from ManualDeployment to ContinuousDeployment
 branches:
   main:
     regex: ^main$
@@ -8,7 +8,7 @@ branches:
     label: ''
   develop:
     regex: ^develop$
-    increment: Minor  # Ensure this is set to Minor
+    increment: Minor
     label: 'alpha'
     track-merge-target: false
     is-source-branch-for: ['feature', 'release']
