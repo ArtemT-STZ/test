@@ -6,7 +6,7 @@ module.exports = {
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
-    '@semantic-release/changelog',
+    // '@semantic-release/changelog',
     ['@semantic-release/git', {
       // assets: ['CHANGELOG.md', 'package.json', '*.csproj'],
       message: 'chore(release): ${nextRelease.version} [skip ci]'
