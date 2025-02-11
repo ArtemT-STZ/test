@@ -1,0 +1,19 @@
+name: GitVersion
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.1.11
+        with:
+	- name: Determine Version
+		id: version_step
+		uses: gittools/actions/gitversion/execute@v3.1.11
