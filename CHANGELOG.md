@@ -1,3 +1,12 @@
+# [1.0.0-rc.2](https://github.com/ArtemT-STZ/test/compare/v1.0.0-rc.1...v1.0.0-rc.2) (2025-02-11)
+
+
+### Features
+
+* **semver:** add 1 2 ([178400d](https://github.com/ArtemT-STZ/test/commit/178400d8e0ff2899120e090b95a4f0743a8285dd))
+* **semver:** add 3 ([1598e13](https://github.com/ArtemT-STZ/test/commit/1598e132591a98b605cba9b587b8b46c5c52c6fc))
+* **semver:** remove 4 ([245e9f1](https://github.com/ArtemT-STZ/test/commit/245e9f153f1511d2186f63f4bd2934c00261247a))
+
 # 1.0.0-rc.1 (2025-02-11)
 
 
