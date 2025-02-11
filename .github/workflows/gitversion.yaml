@@ -37,7 +37,6 @@ jobs:
         uses: gittools/actions/gitversion/execute@v3.1.11
         with:
           configFilePath: './GitVersion.yml'
-          versionSpec: '6.0'
 
       # - name: Output Version
       #   run: echo "Version: ${{ steps.gitversion.outputs.fullSemVer }}"
