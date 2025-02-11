@@ -1,4 +1,4 @@
-mode: ManualDeployment
+mode: ContinuousDeployment
 branches:
   main:
     regex: ^main$
@@ -30,7 +30,7 @@ branches:
     increment: Inherit
     label: 'pr'
 
-# ignore:
-#   sha: []
+ignore:
+  sha: []
 
 commit-message-incrementing: Enabled
