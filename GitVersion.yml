@@ -46,11 +46,11 @@ branches:
     source-branches: []
     is-source-branch-for: []
     tracks-release-branches: false
-    is-release-branch: false
+    is-release-branch: true
     is-main-branch: false
     pre-release-weight: 55000
   release:
-    mode: ManualDeployment
+    mode: ContinuousDelivery
     label: beta
     increment: Minor
     prevent-increment:
@@ -67,7 +67,7 @@ branches:
     is-main-branch: false
     pre-release-weight: 30000
   feature:
-    mode: ManualDeployment
+    mode: ContinuousDelivery
     label: '{BranchName}'
     increment: Inherit
     prevent-increment:
@@ -103,7 +103,7 @@ branches:
     is-source-branch-for: []
     pre-release-weight: 30000
   hotfix:
-    mode: ManualDeployment
+    mode: ContinuousDelivery
     label: beta
     increment: Inherit
     prevent-increment:
