@@ -22,7 +22,7 @@ branches:
   develop:
     mode: ContinuousDelivery
     label: alpha
-    increment: Minor
+    # increment: Minor
     prevent-increment:
       when-current-commit-tagged: false
     track-merge-target: true
@@ -37,7 +37,7 @@ branches:
     pre-release-weight: 0
   main:
     label: ''
-    increment: Patch
+    # increment: Patch
     prevent-increment:
       of-merged-branch: true
     track-merge-target: false
@@ -52,7 +52,7 @@ branches:
   release:
     mode: ManualDeployment
     label: beta
-    increment: Minor
+    # increment: Minor
     prevent-increment:
       of-merged-branch: true
       when-current-commit-tagged: false
@@ -69,7 +69,7 @@ branches:
   feature:
     mode: ManualDeployment
     label: '{BranchName}'
-    increment: Inherit
+    # increment: Inherit
     prevent-increment:
       when-current-commit-tagged: false
     track-merge-message: true
@@ -86,7 +86,7 @@ branches:
   pull-request:
     mode: ContinuousDelivery
     label: PullRequest
-    increment: Inherit
+    # increment: Inherit
     prevent-increment:
       of-merged-branch: true
       when-current-commit-tagged: false
@@ -105,7 +105,7 @@ branches:
   hotfix:
     mode: ManualDeployment
     label: beta
-    increment: Inherit
+    # increment: Inherit
     prevent-increment:
       when-current-commit-tagged: false
     regex: ^hotfix(es)?[/-](?<BranchName>.+)
@@ -118,7 +118,7 @@ branches:
     pre-release-weight: 30000
   support:
     label: ''
-    increment: Patch
+    # increment: Patch
     prevent-increment:
       of-merged-branch: true
     track-merge-target: false
@@ -133,7 +133,7 @@ branches:
   unknown:
     mode: ManualDeployment
     label: '{BranchName}'
-    increment: Inherit
+    # increment: Inherit
     prevent-increment:
       when-current-commit-tagged: true
     regex: (?<BranchName>.+)
@@ -151,7 +151,7 @@ ignore:
   sha: []
 mode: ContinuousDelivery
 label: '{BranchName}'
-increment: Inherit
+# increment: Inherit
 prevent-increment:
   of-merged-branch: false
   when-branch-merged: false
