@@ -162,7 +162,7 @@ prevent-increment:
   when-current-commit-tagged: true
 track-merge-target: false
 track-merge-message: true
-commit-message-incrementing: Enabled
+# commit-message-incrementing: Enabled
 regex: ''
 source-branches: []
 is-source-branch-for: []
