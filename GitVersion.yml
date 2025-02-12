@@ -12,12 +12,13 @@ merge-message-formats: {}
 update-build-number: true
 semantic-version-format: Strict
 strategies:
-- Fallback
-- ConfiguredNextVersion
-- MergeMessage
-- TaggedCommit
-- TrackReleaseBranches
-- VersionInBranchName
+  - Fallback
+  - ConfiguredNextVersion
+  - MergeMessage
+  - TaggedCommit
+  - TrackReleaseBranches
+  - VersionInBranchName
+  # - CommitMessage
 branches:
   develop:
     mode: ContinuousDelivery
@@ -48,7 +49,7 @@ branches:
     is-source-branch-for: []
     tracks-release-branches: false
     is-release-branch: false
-    is-main-branch: true
+    is-main-branch: false
     pre-release-weight: 55000
   release:
     mode: ManualDeployment
@@ -60,8 +61,8 @@ branches:
     track-merge-target: false
     regex: ^releases?[/-](?<BranchName>.+)
     source-branches:
-    - main
-    - support
+      - main
+      - support
     is-source-branch-for: []
     tracks-release-branches: false
     is-release-branch: true
@@ -76,11 +77,11 @@ branches:
     track-merge-message: true
     regex: ^features?[/-](?<BranchName>.+)
     source-branches:
-    - develop
-    - main
-    - release
-    - support
-    - hotfix
+      - develop
+      - main
+      - release
+      - support
+      - hotfix
     is-source-branch-for: []
     is-main-branch: false
     pre-release-weight: 30000
@@ -95,12 +96,12 @@ branches:
     track-merge-message: true
     regex: ^(pull|pull\-requests|pr)[/-]
     source-branches:
-    - develop
-    - main
-    - release
-    - feature
-    - support
-    - hotfix
+      - develop
+      - main
+      - release
+      - feature
+      - support
+      - hotfix
     is-source-branch-for: []
     pre-release-weight: 30000
   hotfix:
@@ -148,21 +149,21 @@ branches:
     - support
     is-source-branch-for: []
     is-main-branch: false
-ignore:
-  sha: []
-mode: ContinuousDelivery
-label: '{BranchName}'
-increment: Inherit
-prevent-increment:
-  of-merged-branch: false
-  when-branch-merged: false
-  when-current-commit-tagged: true
-track-merge-target: false
-track-merge-message: true
-commit-message-incrementing: Enabled
-regex: ''
-source-branches: []
-is-source-branch-for: []
-tracks-release-branches: false
-is-release-branch: false
-is-main-branch: false
+# ignore:
+#   sha: []
+# mode: ContinuousDelivery
+# label: '{BranchName}'
+# increment: Inherit
+# prevent-increment:
+#   of-merged-branch: false
+#   when-branch-merged: false
+#   when-current-commit-tagged: true
+# track-merge-target: false
+# track-merge-message: true
+# commit-message-incrementing: Enabled
+# regex: ''
+# source-branches: []
+# is-source-branch-for: []
+# tracks-release-branches: false
+# is-release-branch: false
+# is-main-branch: false
