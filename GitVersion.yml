@@ -7,7 +7,7 @@ version-in-branch-pattern: (?<version>[vV]?\d+(\.\d+)?(\.\d+)?).*
 # patch-version-bump-message: \+semver:\s?(fix|patch)
 # no-bump-message: \+semver:\s?(none|skip)
 major-version-bump-message: (feat!|breaking!)
-minor-version-bump-message: (feat:)
+minor-version-bump-message: (feat:.*)
 patch-version-bump-message: (fix:)
 no-bump-message: \+semver:\s?(none|skip)
 tag-pre-release-weight: 60000
