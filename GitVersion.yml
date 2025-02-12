@@ -33,7 +33,7 @@ branches:
     is-source-branch-for: []
     tracks-release-branches: true
     is-release-branch: false
-    is-main-branch: false
+    is-main-branch: true
     pre-release-weight: 0
   main:
     label: ''
@@ -47,7 +47,7 @@ branches:
     is-source-branch-for: []
     tracks-release-branches: false
     is-release-branch: false
-    is-main-branch: true
+    is-main-branch: false
     pre-release-weight: 55000
   release:
     mode: ManualDeployment
