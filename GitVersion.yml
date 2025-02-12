@@ -29,11 +29,12 @@ branches:
     track-merge-message: true
     regex: ^dev(elop)?(ment)?$
     source-branches:
-    - main
+      - main
+      # - feature/*
     is-source-branch-for: []
     tracks-release-branches: true
     is-release-branch: false
-    is-main-branch: false
+    is-main-branch: true
     pre-release-weight: 0
   main:
     label: ''
