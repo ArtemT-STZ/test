@@ -33,7 +33,7 @@ branches:
     is-source-branch-for: []
     tracks-release-branches: true
     is-release-branch: false
-    is-main-branch: true
+    is-main-branch: false
     pre-release-weight: 0
   main:
     label: ''
@@ -46,11 +46,11 @@ branches:
     source-branches: []
     is-source-branch-for: []
     tracks-release-branches: false
-    is-release-branch: true
-    is-main-branch: false
+    is-release-branch: false
+    is-main-branch: true
     pre-release-weight: 55000
   release:
-    mode: ContinuousDelivery
+    mode: ManualDeployment
     label: beta
     increment: Minor
     prevent-increment:
@@ -67,7 +67,7 @@ branches:
     is-main-branch: false
     pre-release-weight: 30000
   feature:
-    mode: ContinuousDelivery
+    mode: ManualDeployment
     label: '{BranchName}'
     increment: Inherit
     prevent-increment:
@@ -103,7 +103,7 @@ branches:
     is-source-branch-for: []
     pre-release-weight: 30000
   hotfix:
-    mode: ContinuousDelivery
+    mode: ManualDeployment
     label: beta
     increment: Inherit
     prevent-increment:
