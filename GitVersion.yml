@@ -33,8 +33,8 @@ branches:
     track-merge-message: true
     regex: ^dev(elop)?(ment)?$
     source-branches:
-    - main
-    is-source-branch-for: []
+      - main
+    is-source-branch-for: [feature, release]
     tracks-release-branches: true
     is-release-branch: false
     is-main-branch: false
@@ -47,8 +47,8 @@ branches:
     track-merge-target: false
     track-merge-message: true
     regex: ^master$|^main$
-    source-branches: []
-    is-source-branch-for: []
+    source-branches: [release]
+    is-source-branch-for: [hotfix]
     tracks-release-branches: false
     is-release-branch: false
     is-main-branch: true
@@ -63,9 +63,9 @@ branches:
     track-merge-target: false
     regex: ^releases?[/-](?<BranchName>.+)
     source-branches:
-    - main
-    - support
-    is-source-branch-for: []
+      - main
+      - support
+    is-source-branch-for: [main]
     tracks-release-branches: false
     is-release-branch: true
     is-main-branch: false
@@ -79,11 +79,11 @@ branches:
     track-merge-message: true
     regex: ^features?[/-](?<BranchName>.+)
     source-branches:
-    - develop
-    - main
-    - release
-    - support
-    - hotfix
+      - develop
+      - main
+      - release
+      - support
+      - hotfix
     is-source-branch-for: []
     is-main-branch: false
     pre-release-weight: 30000
@@ -98,12 +98,12 @@ branches:
     track-merge-message: true
     regex: ^(pull|pull\-requests|pr)[/-]
     source-branches:
-    - develop
-    - main
-    - release
-    - feature
-    - support
-    - hotfix
+      - develop
+      - main
+      - release
+      - feature
+      - support
+      - hotfix
     is-source-branch-for: []
     pre-release-weight: 30000
   hotfix:
@@ -114,8 +114,8 @@ branches:
       when-current-commit-tagged: false
     regex: ^hotfix(es)?[/-](?<BranchName>.+)
     source-branches:
-    - main
-    - support
+      - main
+      - support
     is-source-branch-for: []
     is-release-branch: true
     is-main-branch: false
@@ -128,7 +128,7 @@ branches:
     track-merge-target: false
     regex: ^support[/-](?<BranchName>.+)
     source-branches:
-    - main
+      - main
     is-source-branch-for: []
     tracks-release-branches: false
     is-release-branch: false
@@ -142,30 +142,30 @@ branches:
       when-current-commit-tagged: true
     regex: (?<BranchName>.+)
     source-branches:
-    - main
-    - develop
-    - release
-    - feature
-    - pull-request
-    - hotfix
-    - support
+      - main
+      - develop
+      - release
+      - feature
+      - pull-request
+      - hotfix
+      - support
     is-source-branch-for: []
     is-main-branch: false
 ignore:
   sha: []
-mode: ContinuousDelivery
-label: '{BranchName}'
-increment: Inherit
-prevent-increment:
-  of-merged-branch: false
-  when-branch-merged: false
-  when-current-commit-tagged: true
-track-merge-target: false
-track-merge-message: true
+# mode: ContinuousDelivery
+# label: '{BranchName}'
+# increment: Inherit
+# prevent-increment:
+#   of-merged-branch: false
+#   when-branch-merged: false
+#   when-current-commit-tagged: true
+# track-merge-target: false
+# track-merge-message: true
 # commit-message-incrementing: Enabled
-regex: ''
-source-branches: []
-is-source-branch-for: []
-tracks-release-branches: false
-is-release-branch: false
-is-main-branch: false
+# regex: ''
+# source-branches: []
+# is-source-branch-for: []
+# tracks-release-branches: false
+# is-release-branch: false
+# is-main-branch: false
