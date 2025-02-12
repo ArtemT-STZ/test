@@ -4,7 +4,7 @@ tag-prefix: '[vV]?'
 version-in-branch-pattern: (?<version>[vV]?\d+(\.\d+)?(\.\d+)?).*
 major-version-bump-message: \+semver:\s?(breaking|major)
 minor-version-bump-message: \+semver:\s?(feature|minor)
-patch-version-bump-message: \+semver:\s?(fix|patch)
+patch-version-bump-message: (^fix:\s?.*)
 no-bump-message: \+semver:\s?(none|skip)
 tag-pre-release-weight: 60000
 commit-date-format: yyyy-MM-dd
