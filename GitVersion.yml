@@ -2,8 +2,8 @@ assembly-versioning-scheme: MajorMinorPatch
 assembly-file-versioning-scheme: MajorMinorPatch
 tag-prefix: '[vV]?'
 version-in-branch-pattern: (?<version>[vV]?\d+(\.\d+)?(\.\d+)?).*
-major-version-bump-message: (^(feature!:|feat!:):\s?.*)
-minor-version-bump-message: (^(feature:|feat:):\s?.*)
+major-version-bump-message: (^(feature!:|feat!:)\s?.*)
+minor-version-bump-message: (^(feature:|feat:)\s?.*)
 patch-version-bump-message: (^fix:\s?.*)
 no-bump-message: \+semver:\s?(none|skip)
 tag-pre-release-weight: 60000
@@ -22,7 +22,7 @@ branches:
   develop:
     mode: ContinuousDelivery
     label: alpha
-    increment: Inherit
+    increment: Minor
     prevent-increment:
       when-current-commit-tagged: false
     track-merge-target: true
@@ -33,11 +33,11 @@ branches:
     is-source-branch-for: []
     tracks-release-branches: true
     is-release-branch: false
-    is-main-branch: true
+    is-main-branch: false
     pre-release-weight: 0
   main:
     label: ''
-    increment: Inherit
+    increment: Patch
     prevent-increment:
       of-merged-branch: true
     track-merge-target: false
