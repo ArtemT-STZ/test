@@ -53,7 +53,7 @@ jobs:
           repository: actions
           # milestone: "v${{ steps.gitversion.outputs.majorMinorPatch }}"
           name: "v${{ steps.gitversion.outputs.majorMinorPatch }}"
-          isPreRelease: ${{ github.event.release.prerelease }}
+          # isPreRelease: ${{ github.event.release.prerelease }}
           targetcommitish: "main"
 
       # - uses: gittools/actions/gitreleasemanager/create@v3.1.11
