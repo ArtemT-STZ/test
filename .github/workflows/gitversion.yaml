@@ -43,16 +43,16 @@ jobs:
         with:
           versionSpec: '0.18.x'
 
-      - uses: gittools/actions/gitreleasemanager/create@v3.1.11
-        name: Create release with GitReleaseManager
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repository: $(basename ${{ github.repository }})
-          milestone: "v${{ steps.gitversion.outputs.fullSemVer }}"
-          name: "Release v${{ steps.gitversion.outputs.fullSemVer }}"
-          targetcommitish: main
-          prerelease: false
-          # assets:  |
-          #   src/test.txt
-          #   src/test1.txt
+      # - uses: gittools/actions/gitreleasemanager/create@v3.1.11
+      #   name: Create release with GitReleaseManager
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     owner: ${{ github.repository_owner }}
+      #     repository: $(basename ${{ github.repository }})
+      #     milestone: "v${{ steps.gitversion.outputs.fullSemVer }}"
+      #     name: "Release v${{ steps.gitversion.outputs.fullSemVer }}"
+      #     targetcommitish: main
+      #     prerelease: false
+      #     # assets:  |
+      #     #   src/test.txt
+      #     #   src/test1.txt
