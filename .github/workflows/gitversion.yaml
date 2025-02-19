@@ -51,7 +51,7 @@ jobs:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           owner: ${{ github.repository_owner }}
           repository: $(basename ${{ github.repository }})
-          milestone: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
+          # milestone: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
           name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
           targetcommitish: main
           prerelease: false
