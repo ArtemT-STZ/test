@@ -39,13 +39,13 @@ jobs:
           git push origin "v${{ steps.gitversion.outputs.fullSemVer }}"
 
       - name: Install GitReleaseManager
-        if: ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         uses: gittools/actions/gitreleasemanager/setup@v3.1.11
         with:
           versionSpec: '0.18.x'
 
       - uses: gittools/actions/gitreleasemanager/create@v3.1.11
-        if: ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         name: Create release with GitReleaseManager
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
