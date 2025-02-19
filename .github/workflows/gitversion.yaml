@@ -44,9 +44,29 @@ jobs:
         with:
           versionSpec: '0.18.x'
 
-      - uses: gittools/actions/gitreleasemanager/create@v3.1.11
-        name: Create release with GitReleaseManager
-        if: github.ref == 'refs/heads/main'
+      # - name: Create Milestone if not exists
+      #   if: github.ref == 'refs/heads/main'
+      #   run: |
+      #     gh api repos/${{ github.repository }}/milestones \
+      #       --method POST \
+      #       --field title="v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
+      #       --field state="open" \
+      #       --field description="Milestone for v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
+      #       --silent || echo "Milestone already exists"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Release Notes
+        uses: gittools/actions/gitreleasemanager/export@v3.1.11
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repository: $(basename ${{ github.repository }})
+          # milestone: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
+          input_file: release-notes.md  # Generates release notes into this file
+
+      - name: Create Release with GitReleaseManager
+        uses: gittools/actions/gitreleasemanager/create@v3.1.11
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           owner: ${{ github.repository_owner }}
@@ -55,6 +75,4 @@ jobs:
           name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
           targetcommitish: main
           prerelease: false
-          # assets:  |
-          #   src/test.txt
-          #   src/test1.txt
+          input_file: release-notes.md  # Uses the generated release notes
