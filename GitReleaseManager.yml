@@ -1,0 +1,20 @@
+create:
+  include-created-date-in-title: true
+  allow-update-to-published: false
+  target-commitish: main
+  milestone: v{version}
+  name: "Release v{version}"
+  prerelease: false
+  assets: []
+
+close:
+  exclude-labels:
+    - "wontfix"
+    - "invalid"
+  include-issues-in-release-notes: true
+  include-pull-requests-in-release-notes: true
+  issue-labels-include:
+    - "enhancement"
+    - "bug"
+  issue-labels-exclude:
+    - "duplicate"
