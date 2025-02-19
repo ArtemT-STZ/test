@@ -39,31 +39,19 @@ jobs:
           git push origin "v${{ steps.gitversion.outputs.fullSemVer }}"
 
       - name: Install GitReleaseManager
-        if: github.ref == 'refs/heads/main'
-        run: |
-          wget https://github.com/GitTools/GitReleaseManager/releases/download/0.18.0/gitreleasemanager-linux-x64.zip
-          unzip gitreleasemanager-linux-x64.zip -d gitreleasemanager
-          chmod +x gitreleasemanager/gitreleasemanager
-          echo "$GITHUB_WORKSPACE/gitreleasemanager" >> $GITHUB_PATH
+        if: ref == 'refs/heads/main'
+        uses: gittools/actions/gitreleasemanager/setup@v3.1.11
+        with:
+          versionSpec: '0.18.x'
 
-      - name: Generate Release Notes
-        if: github.ref == 'refs/heads/main'
-        run: |
-          gitreleasemanager export \
-            --token ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} \
-            --owner ${{ github.repository_owner }} \
-            --repository $(basename ${{ github.repository }}) \
-            # --milestone "v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
-            --inputFile release-notes.md
-          
-      - name: Create Release with GitReleaseManager
-        if: github.ref == 'refs/heads/main'
-        run: |
-          gitreleasemanager create \
-            --token ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} \
-            --owner ${{ github.repository_owner }} \
-            --repository $(basename ${{ github.repository }}) \
-            --name "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
-            --targetcommitish main \
-            --prerelease false \
-            --inputFile release-notes.md
+      - uses: gittools/actions/gitreleasemanager/create@v3.1.11
+        if: ref == 'refs/heads/main'
+        name: Create release with GitReleaseManager
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repository: $(basename ${{ github.repository }})
+          # milestone: "v${{ steps.gitversion.outputs.fullSemVer }}"
+          name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
+          targetcommitish: main
+          prerelease: false
