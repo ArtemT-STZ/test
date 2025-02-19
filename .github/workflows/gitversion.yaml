@@ -39,40 +39,31 @@ jobs:
           git push origin "v${{ steps.gitversion.outputs.fullSemVer }}"
 
       - name: Install GitReleaseManager
-        uses: gittools/actions/gitreleasemanager/setup@v3.1.11
         if: github.ref == 'refs/heads/main'
-        with:
-          versionSpec: '0.18.x'
-
-      # - name: Create Milestone if not exists
-      #   if: github.ref == 'refs/heads/main'
-      #   run: |
-      #     gh api repos/${{ github.repository }}/milestones \
-      #       --method POST \
-      #       --field title="v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
-      #       --field state="open" \
-      #       --field description="Milestone for v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
-      #       --silent || echo "Milestone already exists"
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          wget https://github.com/GitTools/GitReleaseManager/releases/download/0.18.0/gitreleasemanager-linux-x64.zip
+          unzip gitreleasemanager-linux-x64.zip -d gitreleasemanager
+          chmod +x gitreleasemanager/gitreleasemanager
+          echo "$GITHUB_WORKSPACE/gitreleasemanager" >> $GITHUB_PATH
 
       - name: Generate Release Notes
-        uses: gittools/actions/gitreleasemanager/export@v3.1.11
-        with:
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repository: $(basename ${{ github.repository }})
-          # milestone: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
-          input_file: release-notes.md  # Generates release notes into this file
-
+        if: github.ref == 'refs/heads/main'
+        run: |
+          gitreleasemanager export \
+            --token ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} \
+            --owner ${{ github.repository_owner }} \
+            --repository $(basename ${{ github.repository }}) \
+            # --milestone "v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
+            --inputFile release-notes.md
+          
       - name: Create Release with GitReleaseManager
-        uses: gittools/actions/gitreleasemanager/create@v3.1.11
-        with:
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repository: $(basename ${{ github.repository }})
-          # milestone: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
-          name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
-          targetcommitish: main
-          prerelease: false
-          input_file: release-notes.md  # Uses the generated release notes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          gitreleasemanager create \
+            --token ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} \
+            --owner ${{ github.repository_owner }} \
+            --repository $(basename ${{ github.repository }}) \
+            --name "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
+            --targetcommitish main \
+            --prerelease false \
+            --inputFile release-notes.md
