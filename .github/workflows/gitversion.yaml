@@ -45,9 +45,10 @@ jobs:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           tag_name: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
           name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
-          body: |
-            ## Changes in this release:
-            - Auto-generated release based on commits.
-            - Commit SHA: `${{ github.sha }}`
+          generate_release_notes: true
+          # body: |
+          #   ## Changes in this release:
+          #   - Auto-generated release based on commits.
+          #   - Commit SHA: `${{ github.sha }}`
           draft: false
           prerelease: false
