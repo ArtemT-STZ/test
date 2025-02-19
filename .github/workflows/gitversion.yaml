@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-      - 'release/*'
-      - 'hotfix/*'
+      - release/*
+      - hotfix/*
   workflow_dispatch:
 
 jobs:
@@ -38,32 +38,16 @@ jobs:
           git tag -a "v${{ steps.gitversion.outputs.fullSemVer }}" -m "Release ${{ steps.gitversion.outputs.fullSemVer }}"
           git push origin "v${{ steps.gitversion.outputs.fullSemVer }}"
 
-      - name: Install GitReleaseManager
+      - name: Create GitHub Release
         if: github.ref == 'refs/heads/main'
-        uses: gittools/actions/gitreleasemanager/setup@v3.1.11
-        with:
-          versionSpec: '0.18.x'
-
-      - name: Create Release
-        if: github.ref == 'refs/heads/main'
-        uses: gittools/actions/gitreleasemanager/create@v3.1.11
+        uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repository: actions
-          # milestone: "v${{ steps.gitversion.outputs.majorMinorPatch }}"
-          name: "v${{ steps.gitversion.outputs.majorMinorPatch }}"
-          # isPreRelease: ${{ github.event.release.prerelease }}
-          # targetcommitish: "main"
-
-      # - uses: gittools/actions/gitreleasemanager/create@v3.1.11
-      #   if: github.ref == 'refs/heads/main'
-      #   name: Create release with GitReleaseManager
-      #   with:
-      #     token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-      #     owner: ${{ github.repository_owner }}
-      #     repository: $(basename ${{ github.repository }})
-      #     # milestone: "v${{ steps.gitversion.outputs.fullSemVer }}"
-      #     name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
-      #     targetcommitish: main
-      #     prerelease: false
+          tag_name: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
+          name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
+          body: |
+            ## Changes in this release:
+            - Auto-generated release based on commits.
+            - Commit SHA: `${{ github.sha }}`
+          draft: false
+          prerelease: false
