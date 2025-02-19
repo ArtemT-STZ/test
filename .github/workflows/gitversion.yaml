@@ -50,5 +50,6 @@ jobs:
           #   ## Changes in this release:
           #   - Auto-generated release based on commits.
           #   - Commit SHA: `${{ github.sha }}`
+          target_commitish: ${{ github.sha }}
           draft: false
           prerelease: false
