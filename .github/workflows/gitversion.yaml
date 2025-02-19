@@ -44,26 +44,24 @@ jobs:
         with:
           versionSpec: '0.18.x'
 
-      - name: Update Release Notes
+      - name: Generate Release Notes
         if: github.ref == 'refs/heads/main'
-        uses: gittools/actions/gitreleasemanager/create@v3.1.11
-        with:
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repository: actions
-          # milestone: "v${{ steps.gitversion.outputs.majorMinorPatch }}"
-          name: "v${{ steps.gitversion.outputs.majorMinorPatch }}"
-          # isPreRelease: ${{ github.event.release.prerelease }}
-          targetcommitish: "main"
+        run: |
+          gitreleasemanager export \
+            --token ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} \
+            --owner ${{ github.repository_owner }} \
+            --repository $(basename ${{ github.repository }}) \
+            # --milestone "v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
+            --inputFile release-notes.md
 
-      # - uses: gittools/actions/gitreleasemanager/create@v3.1.11
-      #   if: github.ref == 'refs/heads/main'
-      #   name: Create release with GitReleaseManager
-      #   with:
-      #     token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-      #     owner: ${{ github.repository_owner }}
-      #     repository: $(basename ${{ github.repository }})
-      #     # milestone: "v${{ steps.gitversion.outputs.fullSemVer }}"
-      #     name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
-      #     targetcommitish: main
-      #     prerelease: false
+      - name: Create Release with GitReleaseManager
+        if: github.ref == 'refs/heads/main'
+        run: |
+          gitreleasemanager create \
+            --token ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} \
+            --owner ${{ github.repository_owner }} \
+            --repository $(basename ${{ github.repository }}) \
+            --name "v${{ steps.gitversion.outputs.MajorMinorPatch }}" \
+            --targetcommitish "main" \
+            --inputFile release-notes.md \
+            --prerelease false
