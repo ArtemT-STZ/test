@@ -39,44 +39,29 @@ jobs:
           git tag -a "v${{ steps.gitversion.outputs.fullSemVer }}" -m "Release ${{ steps.gitversion.outputs.fullSemVer }}"
           git push origin "v${{ steps.gitversion.outputs.fullSemVer }}"
 
-      # - name: Get Previous Tag
-      #   if: github.ref == 'refs/heads/main'
-      #   id: prev_tag
-      #   run: echo "PREV_TAG=$(git describe --tags --abbrev=0 $(git rev-list --tags --skip=1 --max-count=1) 2>/dev/null || echo '')" >> $GITHUB_ENV
-
-      # - name: Generate Changelog
-      #   if: github.ref == 'refs/heads/main'
-      #   run: |
-      #     if [ -z "$PREV_TAG" ]; then
-      #       echo "No previous tag found. Listing all commits..."
-      #       git log --pretty=format:"- %s [%h]" > changelog.txt
-      #     else
-      #       echo "Generating changelog between $PREV_TAG and HEAD..."
-      #       git log $PREV_TAG..HEAD --pretty=format:"- %s [%h]" > changelog.txt
-      #     fi
-
-      # - name: Create GitHub Release
-      #   if: github.ref == 'refs/heads/main'
-      #   uses: softprops/action-gh-release@v2
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     tag_name: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
-      #     name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
-      #     body_path: changelog.txt
-      #     draft: false
-      #     prerelease: false
-      - name: Set up Node.js
+      - name: Get Previous Tag
         if: github.ref == 'refs/heads/main'
-        uses: actions/setup-node@v4
+        id: prev_tag
+        run: echo "PREV_TAG=$(git describe --tags --abbrev=0 $(git rev-list --tags --skip=1 --max-count=1) 2>/dev/null || echo '')" >> $GITHUB_ENV
+
+      - name: Generate Changelog
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if [ -z "$PREV_TAG" ]; then
+            echo "No previous tag found. Listing all commits..."
+            git log --pretty=format:"- %s [%h]" > changelog.txt
+          else
+            echo "Generating changelog between $PREV_TAG and HEAD..."
+            git log $PREV_TAG..HEAD --pretty=format:"- %s [%h]" > changelog.txt
+          fi
+
+      - name: Create GitHub Release
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
         with:
-          node-version: '22'
-
-      - name: Install dependencies
-        if: github.ref == 'refs/heads/main'
-        run: npm install
-
-      - name: Run semantic-release
-        if: github.ref == 'refs/heads/main'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-        run: npx semantic-release
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: "v${{ steps.gitversion.outputs.MajorMinorPatch }}"
+          name: "Release v${{ steps.gitversion.outputs.MajorMinorPatch }}"
+          body_path: changelog.txt
+          draft: false
+          prerelease: false
