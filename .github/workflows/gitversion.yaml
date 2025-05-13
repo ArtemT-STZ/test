@@ -43,8 +43,8 @@ jobs:
       - name: Create Git Tag
         if: github.ref != 'refs/heads/main'
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
+          git config --global user.email "gh-actions@example.com"
+          git config --global user.name "GitHub Actions Example"
           git tag -a "v${{ steps.gitversion.outputs.fullSemVer }}" -m "Release ${{ steps.gitversion.outputs.fullSemVer }}"
           git push origin "v${{ steps.gitversion.outputs.fullSemVer }}"
 
